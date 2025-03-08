@@ -3,6 +3,31 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Configuration du mot de passe
+PASSWORD = "Sight2025!"  # Remplacez par votre mot de passe sécurisé
+
+# Fonction d'authentification
+def check_password():
+    """Affiche un formulaire de connexion et vérifie le mot de passe."""
+    if "auth" not in st.session_state:
+        st.session_state.auth = False
+
+    if not st.session_state.auth:
+        password = st.text_input("Entrez le mot de passe :", type="password")
+        if password == PASSWORD:
+            st.session_state.auth = True
+            st.experimental_rerun()
+        else:
+            st.warning("Mot de passe incorrect.")
+            st.stop()
+
+# Vérification de l'authentification
+check_password()
+
+
+
+
+
 # Load data
 file_path = "export_gryzzly_20250221_projects_from-20240101_to-20241231 (1).xlsx"
 xls = pd.ExcelFile(file_path)
