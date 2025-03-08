@@ -16,7 +16,7 @@ def check_password():
         password = st.text_input("Entrez le mot de passe :", type="password")
         if password == PASSWORD:
             st.session_state.auth = True
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.warning("Mot de passe incorrect.")
             st.stop()
